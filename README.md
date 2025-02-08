@@ -2,9 +2,8 @@
 
 ## Overview
 
-PraticTesteIniflex is a Java-based project that demonstrates various operations on a list of `Person` and `Employee`
-objects, such as filtering, sorting, and grouping. The project uses Maven for dependency management and build
-automation.
+PraticTesteIniflex is a Java-based project that test the abilities of a developer to create a simple application
+with all the basic concepts of Java programming language.
 
 ## Prerequisites
 
@@ -29,7 +28,7 @@ automation.
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
+    git clone https://github.com/pheiterer/PraticTestIniflex
     cd PraticTesteIniflex
     ```
 
@@ -37,16 +36,3 @@ automation.
     ```sh
     mvn clean install
     ```
-
-3. Run the application:
-    ```sh
-    mvn exec:java -Dexec.mainClass="org.main.Main"
-    ```
-
-## Running Tests
-
-To run the tests, use the following Maven command:
-
-```sh
-mvn test
-```
