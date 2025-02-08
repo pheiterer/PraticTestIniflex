@@ -5,8 +5,10 @@ import org.model.Employee;
 import org.model.Person;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -32,6 +34,7 @@ public class Main {
         List<Employee> employeeStream = personList.stream()
                 .map(Employee.class::cast).toList();
 
+        //Grouping employees by role
         Map<String, List<Employee>> employees = employeeStream.stream()
                 .collect(Collectors.groupingBy(Employee::getRole));
 
@@ -59,13 +62,15 @@ public class Main {
                 .sorted(Comparator.comparing(Person::getName))
                 .forEach(System.out::println);
 
-        System.out.println("\nSalário Total: " + employeeStream.stream()
-                .map(Employee::getSalary)
-                .reduce(BigDecimal.ZERO, BigDecimal::add));
+        System.out.println("\nSalário Total: " + NumberFormat.
+                getInstance(Locale.of("pt", "BR"))
+                .format(employeeStream.stream()
+                        .map(Employee::getSalary)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add)));
 
         employeeStream
                 .forEach(employee -> {
-                    short howMany = (short) (employee.getSalary().intValue() / 1212);
+                    final int howMany = employee.getSalary().intValue() / 1212;
                     System.out.printf("%nNome: %s ganha %s salário mínimos",
                             employee.getName(),
                             howMany);
